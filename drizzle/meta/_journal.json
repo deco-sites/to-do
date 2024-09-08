@@ -8,6 +8,27 @@
       "when": 1725743258690,
       "tag": "0000_loud_iceman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1725802424171,
+      "tag": "0001_polite_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1725802615140,
+      "tag": "0002_mighty_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1725802685394,
+      "tag": "0003_large_killer_shrike",
+      "breakpoints": true
     }
   ]
 }

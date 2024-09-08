@@ -1,6 +1,6 @@
 
 import { SectionProps } from "deco/types.ts";
-import type { AppContext } from "site/apps/deco/records.ts";
+import type { AppContext } from "site/apps/site.ts";
 import { toDos as toDosSchema } from "site/db/schema.ts";
 import type { Props as ToDosProps } from "site/loaders/todos.ts";
 import { useSection } from "deco/hooks/useSection.ts";

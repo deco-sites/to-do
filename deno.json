@@ -40,7 +40,9 @@
     "simple-git": "npm:simple-git@^3.25.0",
     "drizzle-orm": "https://esm.sh/drizzle-orm@0.30.10",
     "drizzle-orm/": "https://esm.sh/drizzle-orm@0.30.10/",
-    "drizzle-kit": "https://esm.sh/drizzle-kit@0.21.2"
+    "drizzle-kit": "https://esm.sh/drizzle-kit@0.21.2",
+    "djwt": "https://deno.land/x/djwt@v2.9/mod.ts",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts"
   },
   "tasks": {
     "start": "deno task bundle && deno run -A --unstable-http --env --config=deno.json https://deco.cx/run --build-cmd 'deno task build' -- deno task dev",

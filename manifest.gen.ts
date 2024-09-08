@@ -5,6 +5,7 @@
 import * as $$$$$$$$$0 from "./actions/addTodo.ts";
 import * as $$$$$$$$$1 from "./actions/checkTodo.ts";
 import * as $$$$$$$$$2 from "./actions/removeTodo.ts";
+import * as $$$$$$$$$3 from "./actions/signUp.ts";
 import * as $$$$$$$$$$$0 from "./apps/deco/blog.ts";
 import * as $$$$$$$$$$$1 from "./apps/deco/htmx.ts";
 import * as $$$$$$$$$$$2 from "./apps/deco/records.ts";
@@ -12,8 +13,9 @@ import * as $$$$$$$$$$$3 from "./apps/site.ts";
 import * as $$$0 from "./loaders/todos.ts";
 import * as $$$$$$0 from "./sections/Footer.tsx";
 import * as $$$$$$1 from "./sections/ItWorks.tsx";
-import * as $$$$$$2 from "./sections/Theme/Theme.tsx";
-import * as $$$$$$3 from "./sections/ToDoList.tsx";
+import * as $$$$$$2 from "./sections/SignUp.tsx";
+import * as $$$$$$3 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$4 from "./sections/ToDoList.tsx";
 
 const manifest = {
   "loaders": {
@@ -22,13 +24,15 @@ const manifest = {
   "sections": {
     "site/sections/Footer.tsx": $$$$$$0,
     "site/sections/ItWorks.tsx": $$$$$$1,
-    "site/sections/Theme/Theme.tsx": $$$$$$2,
-    "site/sections/ToDoList.tsx": $$$$$$3,
+    "site/sections/SignUp.tsx": $$$$$$2,
+    "site/sections/Theme/Theme.tsx": $$$$$$3,
+    "site/sections/ToDoList.tsx": $$$$$$4,
   },
   "actions": {
     "site/actions/addTodo.ts": $$$$$$$$$0,
     "site/actions/checkTodo.ts": $$$$$$$$$1,
     "site/actions/removeTodo.ts": $$$$$$$$$2,
+    "site/actions/signUp.ts": $$$$$$$$$3,
   },
   "apps": {
     "site/apps/deco/blog.ts": $$$$$$$$$$$0,
