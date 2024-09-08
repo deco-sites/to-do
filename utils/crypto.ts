@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt";
 
-const cipherText = 'secret'
+const cipherText = Deno.env.get("DECO_PASSWORD_ENCODER")
 
 export const encrypt = async (password: string) => {
     return await bcrypt.hash(password + cipherText);

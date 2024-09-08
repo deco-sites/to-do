@@ -4,6 +4,7 @@ import type { AppContext } from "site/apps/site.ts";
 import { users as usersSchema } from "site/db/schema.ts";
 import { useSection } from "deco/hooks/useSection.ts";
 import { redirect } from "deco/mod.ts"
+import { Secret } from "apps/website/loaders/secret.ts";
 
 type UserInsert = typeof usersSchema.$inferInsert;
 type UserKeys = keyof UserInsert;
@@ -26,6 +27,7 @@ const isUserPropType = (
     userProps[key]?.some((v) => typeof v === typeof value);
 
 interface Props {
+  passwordTokenToEncoder: Secret;
   mode?: "signup";
   message?: string;
 }

@@ -1,1 +1,1 @@
-{"name":"Sign Up","path":"/sign-up","sections":[{"__resolveType":"site/sections/SignUp.tsx"}],"seo":{"__resolveType":"website/sections/Seo/SeoV2.tsx"},"__resolveType":"website/pages/Page.tsx"}
+{"name":"Sign Up","path":"/sign-up","sections":[{"__resolveType":"site/sections/SignUp.tsx","passwordTokenToEncoder":{"__resolveType":"website/loaders/secret.ts","encrypted":"459cdfc3f037843209f52ada41e5b6bc","name":"DECO_PASSWORD_ENCODER"}}],"seo":{"__resolveType":"website/sections/Seo/SeoV2.tsx"},"__resolveType":"website/pages/Page.tsx"}
