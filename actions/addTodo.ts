@@ -9,7 +9,7 @@ async function loader(
     { invoke }: AppContext,
 ) {
     const drizzle = await invoke.records.loaders.drizzle();
-    await drizzle.insert(toDos).values({ description: props.description, done: false })
+    await drizzle.insert(toDos).values({ description: props.description, done: false, userId: props.userId })
 
     return null;
 }

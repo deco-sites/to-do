@@ -2,9 +2,9 @@
 import { SectionProps } from "deco/types.ts";
 import type { AppContext } from "site/apps/site.ts";
 import { toDos as toDosSchema } from "site/db/schema.ts";
-import type { Props as ToDosProps } from "site/loaders/todos.ts";
 import { useSection } from "deco/hooks/useSection.ts";
 import Icon from "site/components/ui/Icon.tsx";
+import { redirect } from "deco/mod.ts"
 
 type TodosInsert = typeof toDosSchema.$inferInsert;
 type TodosKeys = keyof TodosInsert;
@@ -14,6 +14,7 @@ const todosProps: Record<TodosKeys, TodosInsert[TodosKeys][]> = {
   done: [false],
   description: ["", undefined, null],
   id: [0],
+  userId: [0]
 };
 
 const isToDosPropKey = (
@@ -28,18 +29,30 @@ const isToDosPropType = (
 interface Props {
   mode?: "add" | "check" | "delete";
   todo?: TodosInsert;
+  id?: string;
 }
 
 export async function loader(
-  { mode, todo }: Props,
+  { mode, todo, id }: Props,
   req: Request,
   ctx: AppContext,
 ) {
+
+  const hasToken = req.url.includes("id")
+  if (!hasToken) {
+    const url = new URL(req.url);
+    url.pathname = "/sign-in";
+    redirect(url.toString(), 301);
+  }
+
+  const customerId = req.url.split("id=")[1]
+
   if (mode === "add" && req.body) {
     const newData: Partial<TodosInsert> = {};
     (await req.formData()).forEach((value, key) => {
         isToDosPropKey(key) && isToDosPropType(key, value) && (newData[key] = value as any)
     })
+    newData.userId = Number(id)
     await ctx.invoke("site/actions/addTodo.ts", newData)
   }
 
@@ -51,12 +64,12 @@ export async function loader(
     await ctx.invoke("site/actions/removeTodo.ts", todo)
   }
 
-  const toDos = await ctx.invoke("site/loaders/todos.ts");
-  return toDos as unknown as Promise<ToDosProps>;
+  const toDos = await ctx.invoke("site/loaders/todos.ts", { userId: Number(customerId) });
+  return { toDos: toDos.toDos, customerId };
 }
 
 export default function ToDoList(
-  { toDos = [] }: SectionProps<typeof loader>,
+  { toDos = [], customerId }: SectionProps<typeof loader>,
 ) {
   return (
     <div class="flex justify-center w-full relative">
@@ -65,7 +78,7 @@ export default function ToDoList(
             <div class="w-full absolute top-0 left-0 bg-gray-300 h-[185px] z-[-1]"></div>
             <form
                 hx-post={useSection<Props>({
-                    props: { mode: "add" },
+                    props: { mode: "add", id: customerId },
                 })}
                 hx-trigger="click"
                 hx-target="closest section"
